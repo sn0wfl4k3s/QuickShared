@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/QuickShared.Application/QuickShared.Application.csproj" Id="ec8c73b0-24de-4432-ab44-274684b77662" />
+    <Project Path="src/QuickShared.Domain/QuickShared.Domain.csproj" Id="03ff74e0-ddb5-4b00-967f-04dd73e60163" />
+    <Project Path="src/QuickShared.Infrastructure/QuickShared.Infrastructure.csproj" Id="94d4550f-c497-4fad-b231-20411e51bbe4" />
+    <Project Path="src/QuickShared.Web/QuickShared.Web.csproj" Id="945ef157-f6a4-4170-845d-3ebc48da6dc1" />
+  </Folder>
+</Solution>
