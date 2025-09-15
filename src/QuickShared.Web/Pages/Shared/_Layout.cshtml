@@ -14,9 +14,9 @@
 <body class="bg-[#111418] text-white h-full flex flex-col">
 	<div class="wrapper flex-grow">
 		<header class="flex items-center justify-between whitespace-nowrap px-10 py-4 bg-black">
-			<div class="flex items-center gap-3 text-white">
-				<h2 class="text-white text-xl font-bold">Quick Shared</h2>
-			</div>
+			<a href="/" class="flex items-center gap-3 text-white">
+					<h2 class="text-white text-xl font-bold">Quick Shared</h2>
+				</a>
 			<div class="flex flex-1 justify-end items-center gap-6">
 				<nav class="hidden md:flex items-center gap-6">
 					@* <a class="text-gray-300 hover:text-white text-sm font-medium" href="#">Sobre</a> *@
@@ -30,16 +30,25 @@
 			@RenderBody()
 		</main>
 	</div>
+	
 	<footer class="border-t border-gray-800 text-gray-400 p-4 text-center">
 		<div class="container pl-8">
 			&copy; 2025 - Quick Shared - <a asp-area="" asp-page="/Privacy">Privacy</a>
 		</div>
 	</footer>
 
+	<div id="spinner-overlay" class="hidden fixed inset-0 bg-black opacity-50 z-50 flex items-center justify-center">
+		<div class="w-28 h-28 border-8 text-blue-400 text-4xl animate-spin border-gray-300 flex items-center justify-center border-t-blue-400 rounded-full">
+			<svg viewBox="0 0 24 24" fill="currentColor" height="1em" width="1em" class="animate-ping">
+				<path d="M12.001 4.8c-3.96 0-7.2 3.24-7.2 7.2s3.24 7.2 7.2 7.2 7.2-3.24 7.2-7.2-3.24-7.2-7.2-7.2zm0 12.96c-3.168 0-5.76-2.592-5.76-5.76s2.592-5.76 5.76-5.76 5.76 2.592 5.76 5.76-2.592 5.76-5.76 5.76zm.001-8.64c-.528 0-.96.432-.96.96s.432.96.96.96.96-.432.96-.96-.432-.96-.96-.96z"></path>
+			</svg>
+		</div>
+	</div>
+
 	<script src="~/lib/jquery/dist/jquery.min.js"></script>
-	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="~/js/site.js" asp-append-version="true"></script>
 
 	@await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>
