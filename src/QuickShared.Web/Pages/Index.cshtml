@@ -1,10 +1,30 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+	ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="flex flex-1 items-center justify-center py-8 px-4 sm:px-6 lg:px-8">
+	<div class="w-full max-w-2xl text-center space-y-4">
+		<div class="space-y-4">
+			<h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">Compartilhe arquivos rapidamente</h1>
+			<p class="text-lg text-gray-400">Arraste e solte seus arquivos ou selecione para fazer o upload e compartilhar com compressão instantânea.</p>
+		</div>
+		<div class="bg-gray-800 border-2 border-dashed border-gray-600 rounded-xl p-4 sm:p-5 space-y-6">
+			<div class="flex flex-col items-center justify-center space-y-4">
+				<span class="material-symbols-outlined text-8xl text-gray-500" style="font-size:52px">cloud_upload</span>
+				<p class="text-lg font-semibold text-white">Arraste e solte arquivos aqui</p>
+				<p class="text-gray-400 text-sm">ou</p>
+				<button class="flex items-center gap-2 min-w-[84px] cursor-pointer justify-center overflow-hidden rounded-md h-8 px-6 bg-gray-700 text-white text-base font-medium hover:bg-gray-600 focus:ring-4 focus:ring-gray-500 transition-all duration-300">
+					<span class="material-symbols-outlined">attach_file</span>
+					<span class="truncate">Selecionar Arquivo</span>
+				</button>
+			</div>
+		</div>
+		<div class="flex justify-center pt-4">
+			<button class="flex min-w-[150px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-md h-8 px-8 bg-blue-600 text-white text-lg font-bold shadow-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 transition-all duration-300">
+				<span class="truncate">Upload</span>
+			</button>
+		</div>
+	</div>
 </div>

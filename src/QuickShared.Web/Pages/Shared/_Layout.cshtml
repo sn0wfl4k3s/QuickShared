@@ -1,52 +1,45 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - QuickShared.Web</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/QuickShared.Web.styles.css" asp-append-version="true" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - Quick Shared</title>
+	<script type="importmap"></script>
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<script src="https://cdn.jsdelivr.net/npm/@@tailwindcss/browser@4"></script>
+	<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+	<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700" onload="this.rel='stylesheet'" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">QuickShared.Web</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+<body class="bg-[#111418] text-white h-full flex flex-col">
+	<div class="wrapper flex-grow">
+		<header class="flex items-center justify-between whitespace-nowrap px-10 py-4 bg-black">
+			<div class="flex items-center gap-3 text-white">
+				<h2 class="text-white text-xl font-bold">Quick Shared</h2>
+			</div>
+			<div class="flex flex-1 justify-end items-center gap-6">
+				<nav class="hidden md:flex items-center gap-6">
+					@* <a class="text-gray-300 hover:text-white text-sm font-medium" href="#">Sobre</a> *@
+					<a class="text-gray-300 hover:text-white text-sm font-medium transition-colors" href="#">Privacidade</a>
+					@* <a class="text-gray-300 hover:text-white text-sm font-medium transition-colors" href="#">Contato</a> *@
+				</nav>
+			</div>
+		</header>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - QuickShared.Web - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
+		<main role="main">
+			@RenderBody()
+		</main>
+	</div>
+	<footer class="border-t border-gray-800 text-gray-400 p-4 text-center">
+		<div class="container pl-8">
+			&copy; 2025 - Quick Shared - <a asp-area="" asp-page="/Privacy">Privacy</a>
+		</div>
+	</footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
 
-    @await RenderSectionAsync("Scripts", required: false)
+	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
