@@ -1,0 +1,39 @@
+
+name: .NET CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore QuickShared.slnx
+
+    - name: Build
+      run: dotnet build QuickShared.slnx --configuration Release --no-restore
+
+    - name: Test
+      run: dotnet test QuickShared.slnx --no-build --verbosity normal
+
+    - name: Publish
+      run: dotnet publish src/QuickShared.Web/QuickShared.Web.csproj --configuration Release --output ./publish
+
+    - name: FTP Deploy
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./publish/
