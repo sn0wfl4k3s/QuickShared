@@ -1,0 +1,58 @@
+@page
+@model SearchModel
+@{
+    ViewData["Title"] = "Search Results";
+
+    string FormatBytes(long bytes)
+    {
+        string[] suffixes = { "B", "KB", "MB", "GB", "TB" };
+        int i = 0;
+        double dblSByte = bytes;
+        while (dblSByte >= 1024 && i < suffixes.Length - 1)
+        {
+            dblSByte /= 1024;
+            i++;
+        }
+        return string.Format("{0:0.##} {1}", dblSByte, suffixes[i]);
+    }
+}
+
+<div class="flex flex-1 items-center justify-center py-5 px-4 sm:px-6 lg:px-8">
+    <div class="w-full max-w-2xl text-center space-y-4">
+        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">Resultados da Busca</h1>
+
+        @if (Model.FilesFound?.Files.Any() == true)
+        {
+            <div class="pt-5">
+                <ul class="space-y-3">
+                    @foreach (var file in Model.FilesFound.Files)
+                    {
+                        <li class="bg-gray-800 border-2 border-gray-700 rounded-xl p-4 flex items-center justify-between transition-colors hover:bg-gray-700">
+                            <div class="flex items-center gap-4">
+                                <span class="material-symbols-outlined text-gray-400">description</span>
+                                <div class="text-left">
+                                    <p class="text-white font-semibold">@file.FileName</p>
+                                    <p class="text-gray-400 text-sm">@FormatBytes(file.Size)</p>
+                                </div>
+                            </div>
+                            <a href="/download/@file.FileId" class="flex items-center justify-center h-8 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 transition-colors">
+                                <span class="material-symbols-outlined">download</span>
+                                <span class="pl-2">Download</span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+        else
+        {
+            <p class="text-lg text-gray-400">Nenhum arquivo encontrado para "@Model.FileName".</p>
+        }
+
+        <div class="pt-4">
+            <a href="/" class="flex items-center justify-center h-8 px-4 bg-gray-700 text-white rounded-lg hover:bg-gray-600 focus:ring-4 focus:ring-gray-500 transition-colors">
+                Voltar
+            </a>
+        </div>
+    </div>
+</div>

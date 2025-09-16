@@ -1,3 +1,4 @@
+
 using Mediator;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -39,3 +40,4 @@ public class IndexModel(ILogger<IndexModel> logger, IMediator mediator) : PageMo
         }
     }
 }
+
