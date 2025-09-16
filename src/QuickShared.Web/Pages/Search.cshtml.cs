@@ -5,17 +5,12 @@ using QuickShared.Application.Features.GetFilesByName;
 
 namespace QuickShared.Web.Pages;
 
-public class SearchModel : PageModel
+public class SearchModel(IMediator mediator) : PageModel
 {
-    private readonly IMediator _mediator;
-
-    public SearchModel(IMediator mediator)
-    {
-        _mediator = mediator;
-    }
+    private readonly IMediator _mediator = mediator;
 
     [BindProperty(SupportsGet = true)]
-    public string FileName { get; set; }
+    public string? FileName { get; set; }
 
     public GetFilesByNameResponse FilesFound { get; set; }
 
