@@ -28,11 +28,9 @@ internal sealed class StorageTelegramService(IOptions<StorageTelegramOptions> op
 
         var message = await telegramBot.SendDocument(_options.ChatId, inputFile, cancellationToken: cancellationToken);
 
-        using var httpClient = new HttpClient();
-
         var urlGetFilePath = string.Format(_options.UrlBaseToGetFilePath, _options.Token, message?.Document?.FileId);
 
-        var json = await httpClient.GetStringAsync(urlGetFilePath, cancellationToken);
+        var json = await _httpClient.GetStringAsync(urlGetFilePath, cancellationToken);
 
         var filePath = JsonDocument.Parse(json).RootElement
             .GetProperty("result")
