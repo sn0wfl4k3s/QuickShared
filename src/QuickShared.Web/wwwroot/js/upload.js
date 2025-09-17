@@ -11,6 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     fileInput.addEventListener('change', () => {
+        if (fileInput.files.length > 1) {
+            alert('You can only upload one file at a time.');
+            fileInput.value = ''; // Clear the selected files
+            fileNameDisplay.textContent = '';
+            return;
+        }
         if (fileInput.files.length > 0) {
             fileNameDisplay.textContent = fileInput.files[0].name;
         }
@@ -28,6 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
     dropArea.addEventListener('drop', (e) => {
         e.preventDefault();
         dropArea.classList.remove('border-blue-600');
+        if (e.dataTransfer.files.length > 1) {
+            alert('You can only upload one file at a time.');
+            return;
+        }
         if (e.dataTransfer.files.length > 0) {
             fileInput.files = e.dataTransfer.files;
             fileNameDisplay.textContent = fileInput.files[0].name;

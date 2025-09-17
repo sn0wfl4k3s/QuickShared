@@ -1,82 +1,82 @@
 # QuickShared
 
-QuickShared é uma aplicação de compartilhamento de arquivos desenvolvida em .NET que se destaca por utilizar o Telegram como seu principal serviço de armazenamento. A aplicação permite que os usuários façam upload, pesquisem e baixem arquivos de forma simples e eficiente.
+QuickShared is a file-sharing application developed in .NET that stands out for using Telegram as its primary storage service. The application allows users to upload, search, and download files simply and efficiently.
 
-## ✨ Funcionalidades
+## ✨ Features
 
-- **Upload de Arquivos**: Interface de arrastar e soltar (drag-and-drop) ou seleção de arquivo para um upload fácil.
-- **Armazenamento no Telegram**: Os arquivos enviados são armazenados em um canal ou chat privado do Telegram, utilizando a API de Bots do Telegram.
-- **Compressão de Arquivos**: (Assumindo que isso faz parte do processo) Os arquivos são comprimidos antes do upload para otimizar o armazenamento.
-- **Busca de Arquivos**: Funcionalidade de busca para encontrar arquivos pelo nome.
-- **Download Direto**: Geração de links para download direto dos arquivos.
+- **File Upload**: Drag-and-drop interface or file selection for easy uploading.
+- **Telegram Storage**: Uploaded files are stored in a private Telegram channel or chat, using the Telegram Bot API.
+- **File Compression**: (Assuming this is part of the process) Files are compressed before upload to optimize storage.
+- **File Search**: Search functionality to find files by name.
+- **Direct Download**: Generation of direct download links for files.
 
-## 🚀 Tecnologias e Arquitetura
+## 🚀 Technologies and Architecture
 
-O projeto foi construído utilizando uma abordagem moderna com .NET, seguindo princípios de Arquitetura Limpa e _Vertical Slice Architecture_.
+The project was built using a modern approach with .NET, following the principles of Clean Architecture and Vertical Slice Architecture.
 
 ### Tech Stack
 
 - **Backend**:
   - **Framework**: .NET 9 / ASP.NET Core
-  - **Padrão de Arquitetura**: Arquitetura Limpa com _Vertical Slices_
-  - **Comunicação**: MediatR para implementação do padrão CQRS
+  - **Architecture Pattern**: Clean Architecture with Vertical Slices
+  - **Communication**: MediatR for implementing the CQRS pattern
 - **Frontend**:
   - **UI**: ASP.NET Core Razor Pages
-  - **Estilização**: CSS customizado (com possível uso de frameworks como Bootstrap/Tailwind)
-- **Banco de Dados**:
+  - **Styling**: Custom CSS (with possible use of frameworks like Bootstrap/Tailwind)
+- **Database**:
   - **ORM**: Entity Framework Core
-  - **SGBD**: PostgreSQL
-- **Armazenamento de Arquivos**:
-  - **Serviço**: Telegram Bot API
+  - **DBMS**: PostgreSQL
+- **File Storage**:
+  - **Service**: Telegram Bot API
 - **DevOps**:
   - **CI/CD**: GitHub Actions
   - **Deploy**: FTP
 
-## 🏗️ Estrutura do Projeto
+## 🏗️ Project Structure
 
-O código-fonte é organizado em projetos distintos, cada um com sua responsabilidade:
+The source code is organized into distinct projects, each with its own responsibility:
 
-- `QuickShared.Domain`: Contém as entidades de negócio, abstrações e lógica de domínio principal.
-- `QuickShared.Application`: Contém a lógica da aplicação, como os _handlers_ do MediatR para cada funcionalidade (Salvar Arquivo, Buscar Arquivo, etc.).
-- `QuickShared.Infrastructure`: Implementa os serviços externos, como o acesso ao banco de dados (EF Core) e o serviço de armazenamento no Telegram.
-- `QuickShared.Web`: Interface web para interação do usuário, construída com Razor Pages.
-- `QuickShared.CrossCutting`: Projeto para configuração da injeção de dependência e outras configurações transversais.
+- `QuickShared.Domain`: Contains business entities, abstractions, and core domain logic.
+- `QuickShared.Application`: Contains application logic, such as MediatR handlers for each feature (Save File, Search File, etc.).
+- `QuickShared.Infrastructure`: Implements external services, such as database access (EF Core) and the Telegram storage service.
+- `QuickShared.Web`: Web interface for user interaction, built with Razor Pages.
+- `QuickShared.CrossCutting`: Project for configuring dependency injection and other cross-cutting concerns.
 
-## ⚙️ Como Executar o Projeto
+## ⚙️ How to Run the Project
 
-### Pré-requisitos
+### Prerequisites
 
 - [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
 - PostgreSQL
-- Um Bot do Telegram e o ID de um chat/canal para o armazenamento.
+- A Telegram Bot and the ID of a chat/channel for storage.
 
-### Configuração
+### Configuration
 
-1. **Clone o repositório:**
+1. **Clone the repository:**
    ```bash
-   git clone https://github.com/seu-usuario/QuickShared.git
+   git clone https://github.com/your-user/QuickShared.git
    ```
-2. **Configure as credenciais:**
-   - No arquivo `src/QuickShared.Web/appsettings.json`, configure a `ConnectionString` para o seu banco de dados PostgreSQL.
-   - Configure as informações do seu Bot do Telegram, como o `BotToken` e o `ChatId`, na seção `StorageTelegramOptions`. É altamente recomendado usar _User Secrets_ para isso em ambiente de desenvolvimento.
-3. **Aplique as Migrations:**
-   Execute o comando abaixo a partir da pasta `src/QuickShared.Infrastructure` para criar a estrutura do banco de dados:
+2. **Configure credentials:**
+   - In the `src/QuickShared.Web/appsettings.json` file, configure the `ConnectionString` for your PostgreSQL database.
+   - Configure your Telegram Bot information, such as `BotToken` and `ChatId`, in the `StorageTelegramOptions` section. It is highly recommended to use User Secrets for this in a development environment.
+3. **Apply Migrations:**
+   Run the command below from the `src/QuickShared.Infrastructure` folder to create the database structure:
    ```bash
    dotnet ef database update
    ```
-4. **Execute a aplicação web:**
-   Navegue até a pasta `src/QuickShared.Web` e execute o comando:
+4. **Run the web application:**
+   Navigate to the `src/QuickShared.Web` folder and run the command:
    ```bash
    dotnet run
    ```
-   A aplicação estará disponível em `https://localhost:5001` ou `http://localhost:5000`.
+   The application will be available at `https://localhost:5001` or `http://localhost:5000`.
 
 ## 🔄 CI/CD
 
-O projeto possui um pipeline de Integração e Deploy Contínuo configurado com GitHub Actions no arquivo `.github/workflows/dotnet-ci-cd.yml`.
+The project has a Continuous Integration and Continuous Deployment pipeline configured with GitHub Actions in the `.github/workflows/dotnet-ci-cd.yml` file.
 
-O pipeline é acionado a cada `push` na branch `main` e executa os seguintes passos:
-1.  Builda a solução.
-2.  Executa os testes automatizados.
-3.  Publica os artefatos da aplicação web.
-4.  Realiza o deploy dos artefatos via FTP para o servidor de produção.
+The pipeline is triggered on each `push` to the `main` branch and performs the following steps:
+1.  Builds the solution.
+2.  Runs automated tests.
+3.  Publishes the web application artifacts.
+4.  Deploys the artifacts via FTP to the production server.

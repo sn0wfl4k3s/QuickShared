@@ -19,7 +19,7 @@
 
 <div class="flex flex-1 items-center justify-center py-5 px-4 sm:px-6 lg:px-8">
     <div class="w-full max-w-2xl text-center space-y-4">
-        <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">Resultados da Busca</h1>
+        <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">Search Results</h1>
 
         @if (Model.FilesFound?.Files.Any() == true)
         {
@@ -46,12 +46,12 @@
         }
         else
         {
-            <p class="text-lg text-gray-400">Nenhum arquivo encontrado para "@Model.FileName".</p>
+            <p class="text-lg text-gray-400">No files found for "@Model.FileName".</p>
         }
 
         <div class="pt-4">
             <a href="/" class="flex items-center justify-center h-8 px-4 bg-gray-700 text-white rounded-lg hover:bg-gray-600 focus:ring-4 focus:ring-gray-500 transition-colors">
-                Voltar
+                Back
             </a>
         </div>
     </div>

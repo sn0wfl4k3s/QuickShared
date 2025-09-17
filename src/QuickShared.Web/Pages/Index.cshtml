@@ -9,16 +9,16 @@
 <div class="flex flex-1 items-center justify-center py-8 px-4 sm:px-6 lg:px-8">
 	<div class="w-full max-w-2xl text-center space-y-4">
 		<div class="space-y-4">
-			<h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">Compartilhe e Encontre Arquivos Rapidamente</h1>
-			<p class="text-lg text-gray-400">Procure por arquivos ou arraste e solte para fazer upload e compartilhar com compressão instantânea.</p>
+			<h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">Share and Find Files Quickly</h1>
+			<p class="text-lg text-gray-400">Search for files or drag and drop to upload and share with instant compression.</p>
 		</div>
 		<form method="get" asp-page="/Search">
 			<div class="w-full mx-auto">
 				<div class="relative flex items-center">
 					<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">search</span>
-					<input name="FileName" class="w-full h-10 pl-12 pr-24 rounded-xl bg-gray-800 border-2 border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent transition-colors" placeholder="Procurar arquivos..." type="text" />
+					<input name="FileName" class="w-full h-10 pl-12 pr-24 rounded-xl bg-gray-800 border-2 border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent transition-colors" placeholder="Search files..." type="text" />
 					<button class="absolute right-2 flex items-center justify-center h-8 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 transition-colors" type="submit">
-						Buscar
+						Search
 					</button>
 				</div>
 			</div>
@@ -28,11 +28,11 @@
 			<div class="flex flex-col items-center justify-center space-y-1">
 				<input type="file" id="file-input" class="hidden" />
 				<span class="material-symbols-outlined text-8xl text-gray-500" style="font-size:52px">cloud_upload</span>
-				<p class="text-lg font-semibold text-white">Arraste e solte arquivos aqui</p>
-				<p class="text-gray-400 text-sm">ou</p>
+				<p class="text-lg font-semibold text-white">Drag and drop files here</p>
+				<p class="text-gray-400 text-sm">or</p>
 				<button id="select-file-button" class="flex items-center gap-2 min-w-[84px] cursor-pointer justify-center overflow-hidden rounded-md h-8 px-6 bg-gray-700 text-white text-base font-medium hover:bg-gray-600 focus:ring-4 focus:ring-gray-500 transition-all duration-300">
 					<span class="material-symbols-outlined">attach_file</span>
-					<span class="truncate">Selecionar Arquivo</span>
+					<span class="truncate">Select File</span>
 				</button>
 				<p id="file-name" class="text-gray-400 text-sm"></p>
 			</div>
