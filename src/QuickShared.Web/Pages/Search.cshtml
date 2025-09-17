@@ -19,7 +19,7 @@
 
 <div class="flex flex-1 items-center justify-center py-5 px-4 sm:px-6 lg:px-8">
     <div class="w-full max-w-2xl text-center space-y-4">
-        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">Resultados da Busca</h1>
+        <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">Resultados da Busca</h1>
 
         @if (Model.FilesFound?.Files.Any() == true)
         {
@@ -35,7 +35,7 @@
                                     <p class="text-gray-400 text-sm">@FormatBytes(file.Size)</p>
                                 </div>
                             </div>
-                            <a href="/download/@file.FileId" class="flex items-center justify-center h-8 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 transition-colors">
+                            <a asp-page-handler="Download" asp-route-fileId="@file.FileId" class="flex items-center justify-center h-8 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 transition-colors cursor-pointer">
                                 <span class="material-symbols-outlined">download</span>
                                 <span class="pl-2">Download</span>
                             </a>
