@@ -21,16 +21,16 @@ public sealed class GetFileInfoHandler(IManagerFileRepository repository, ILogge
                 return Result.Fail("File not found");
 
             var response = new GetFileInfoResponse(
-                managerFile.Id, 
-                managerFile.FileName, 
-                managerFile.ContentType, 
-                managerFile.FileSize, 
+                managerFile.Id,
+                managerFile.FileName,
+                managerFile.ContentType,
+                managerFile.FileSize,
                 managerFile.CreatedAt);
 
             return Result.Ok(response);
         }
         catch (Exception ex)
-        { 
+        {
             _logger.LogError(ex, "Error retrieving file info with ID {FileId}", request.FileId);
 
             return Result.Fail("Error retrieving file info");

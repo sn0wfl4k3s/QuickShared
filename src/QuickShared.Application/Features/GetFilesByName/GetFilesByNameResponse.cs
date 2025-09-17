@@ -1,5 +1,3 @@
-using QuickShared.Application.Features.GetFileInfo;
-
 namespace QuickShared.Application.Features.GetFilesByName;
 
 public record GetFilesByNameResponse(IReadOnlyList<FileInfoResponse> Files);

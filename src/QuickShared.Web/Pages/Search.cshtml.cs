@@ -13,16 +13,17 @@ public class SearchModel(IMediator mediator) : PageModel
     [BindProperty(SupportsGet = true)]
     public string? FileName { get; set; }
 
-    public GetFilesByNameResponse FilesFound { get; set; }
+    public GetFilesByNameResponse? FilesFound { get; set; }
 
     public async Task OnGetAsync()
     {
         if (!string.IsNullOrEmpty(FileName))
         {
             var result = await _mediator.Send(new GetFilesByNameRequest(FileName));
-            if(result is not null)
+
+            if (result.IsSuccess)
             {
-                FilesFound = result;
+                FilesFound = result.Value;
             }
         }
     }
